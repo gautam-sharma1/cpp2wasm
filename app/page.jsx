@@ -55,8 +55,9 @@ export default function Home() {
     }
 
     // Extract the filename from Content-Disposition header
+    // Check if Content-Disposition header is present
     const contentDisposition = response.headers.get('Content-Disposition');
-    const filename = contentDisposition.split('filename=')[1] || 'downloaded-file';
+    const filename = contentDisposition ? contentDisposition.split('filename=')[1] || 'downloaded-file' : 'downloaded-file';
 
     // Create a Blob from the response
     const blob = await response.blob();
