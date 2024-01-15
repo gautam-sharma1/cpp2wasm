@@ -1,0 +1,2 @@
+GCLOUD_CLOUD_RUN  = {"BASE_URL": "https://server-jreqgg3hka-uc.a.run.app","COMPILE_URL" : "https://server-jreqgg3hka-uc.a.run.app/api/compile",
+"EXAMPLE_URL" : "https://server-jreqgg3hka-uc.a.run.app/api/example", "DOWNLOAD_URL": "https://server-jreqgg3hka-uc.a.run.app/api/download"}

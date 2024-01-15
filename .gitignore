@@ -34,3 +34,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 __pycache__
+
+# seperate git repo
+/server
+
+# jsut used for testing
+/lib/emsdk
