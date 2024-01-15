@@ -43,6 +43,7 @@ export default function Home() {
       method: 'POST',
       headers: headers,
       body: JSON.stringify(data), // Convert the data to JSON format
+      mode: 'cors', // Set the CORS mode
     };
 
     // Perform the POST request
@@ -99,6 +100,7 @@ export default function Home() {
       method: 'POST',
       headers: headers,
       body: JSON.stringify(data), // Convert the data to JSON format
+      mode: 'cors', // Set the CORS mode
     };
 
     // Perform the POST request
