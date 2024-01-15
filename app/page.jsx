@@ -46,7 +46,7 @@ export default function Home() {
     };
 
     // Perform the POST request
-    const response = await fetch("/api/download", options);
+    const response = await fetch(NEXT_PUBLIC_GCLOUD_CLOUD_RUN_DOWNLOAD_URL, options);
 
     if (!response.ok) {
       setState({ "status": "error", "text": "Error Downloading" });
@@ -102,7 +102,7 @@ export default function Home() {
     };
 
     // Perform the POST request
-    const response = await fetch("/api/compile", options);
+    const response = await fetch(process.env.NEXT_PUBLIC_GCLOUD_CLOUD_RUN_COMPILE_URL, options);
 
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
