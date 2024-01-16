@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import defaultLanguageConstants from "@/app/lib/constants";
@@ -15,6 +15,29 @@ export default function Home() {
   const [cppCode, setCppCode] = useState(defaultLanguageConstants.CPP.defaultCode);
   const [loading, setLoading] = useState(false);
   const [buildStatus, setBuildStatus] = useState(false);
+  const [windowSize, setWindowSize] = useState(0);
+
+
+  useEffect(() => {
+    // only execute all the code below in client side
+    // Handler to call on window resize
+    function handleResize() {
+      // Set window width/height to state
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    }
+
+    // Add event listener
+    window.addEventListener("resize", handleResize);
+
+    // Call handler right away so state gets updated with initial window size
+    handleResize();
+
+    // Remove event listener on cleanup
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   function handleCppCodeChange(value) {
     setCppCode(value);
@@ -129,15 +152,15 @@ export default function Home() {
 
   return (
     <main className="flex flex-col items-center p-4 md:p-8 lg:p-12">
-      <div className="flex flex-col sm:flex-row mb-10 md:mb-16">
-        <div className="mx-auto sm:mx-20 md:mx-20 "> {/* Centered on small screens */}
+      <div className="flex flex-col sm:flex-row mb-10 md:mb-16 ">
+        <div className="mx-auto sm:mx-4 md:mx-10 mt-6 sm:mt-0">  {/* Centered on small screens */}
           <h2 className="text-xl font-bold pb-4 sm:pb-6">C++ code editor</h2>
           <div className="border-indigo-500/100 rounded-lg border-4" style={{ display: " inline-block" }}>
             <_Editor
               defaultCode={defaultLanguageConstants.CPP.defaultCode}
               defaultLanguage={defaultLanguageConstants.CPP.defaultLanguage}
               handleCodeChange={handleCppCodeChange}
-              width={"50vw"} // Adjusted from "90vh" to be more responsive
+              width={windowSize.width >= 640 ? "50vw" : windowSize.width >= 520 ? "80vw" : "100vw"} // Adjusted from "90vh" to be more responsive
             />
           </div>
 
@@ -145,6 +168,7 @@ export default function Home() {
             <CompileButton handleClick={handleClick} />
           </div>
           {loading ? (<span className="loading loading-spinner loading-md"></span>) : <></>}
+          <div className="divider divider-primary"></div>
           <h2>Build Output</h2>
           <div style={{ overflow: "hidden", display: "inline-block" }}>
             <div className="w-full md:w-96 p-4 border-white border-2 overflow-auto">

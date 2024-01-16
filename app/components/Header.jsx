@@ -7,7 +7,9 @@ export default function Header() {
             <div className="flex-none">
                 <ul className="menu menu-horizontal px-1">
                     <li><a>About</a></li>
-                    <li>
+                    <li><a>Pricing</a></li>
+                    <li><a>Contact us</a></li>
+                    {/* <li>
                         <details>
                             <summary>
                                 Contact Us
@@ -17,7 +19,7 @@ export default function Header() {
                                 <li><a>Link 2</a></li>
                             </ul>
                         </details>
-                    </li>
+                    </li> */}
                 </ul>
             </div>
         </div>
