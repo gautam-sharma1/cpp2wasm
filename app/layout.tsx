@@ -20,20 +20,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" data-theme="dracula">
-      <Head>
-        <Script
-          strategy="beforeInteractive"
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-Q7HMTR5N95"
-        ></Script>
-        <Script strategy="beforeInteractive">
-          {`  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-Q7HMTR5N95');`}
-        </Script>
-      </Head>
       <body className={inter.className}>
         <div className="flex flex-col items-center px-12 pt-12">
           <Header />

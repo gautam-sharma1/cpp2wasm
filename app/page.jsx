@@ -9,6 +9,7 @@ import Button from "@/app/components/Button";
 import Terminal from "@/app/components/Terminal";
 import ResizableEditors from "@/app/components/ResizableEditors";
 import Code from "@/app/components/Code";
+import Head from "next/head";
 import "dotenv/config";
 
 export default function Home() {
@@ -161,54 +162,70 @@ export default function Home() {
   }
 
   return (
-    <main className="flex flex-col items-center p-4 md:p-8 lg:p-12 w-screen">
-      <div className="w-full max-w-full">
-        <ResizableEditors
-          Editor1={
-            <_Editor
-              defaultCode={defaultLanguageConstants.CPP.defaultCode}
-              defaultLanguage={defaultLanguageConstants.CPP.defaultLanguage}
-              handleCodeChange={handleCppCodeChange}
-              width={"60vw"} // Adjusted from "90vh" to be more responsive
-            />
-          }
-          Editor2={
-            <_Editor
-              key={generatedJsCode}
-              defaultCode={generatedJsCode}
-              defaultLanguage={defaultLanguageConstants.JS.defaultLanguage}
-              handleCodeChange={handleJSCodeChange}
-              width={"40vw"} // Adjusted from "55vh" to be more responsive
-            />
-          }
-        />
-        <div className="text-center py-4 my-10 sm:py-10 flex justify-around ">
-          <CompileButton handleClick={handleClick} isCompiling={loading} />
-          {!loading ? (
-            <Button
-              handleClick={handleDownloadJSCodeClick}
-              text={"Download JS and Wasm code"}
-              disabled={!buildStatus}
-            />
-          ) : (
-            <></>
-          )}
-        </div>
+    <>
+      <Head>
+        <Script
+          strategy="beforeInteractive"
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-Q7HMTR5N95"
+        ></Script>
+        <Script strategy="beforeInteractive">
+          {`  window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
 
-        <Terminal input={state} />
-        <Code />
-        <p>
-          For more information on how to use the generated{" "}
-          <u>Webassembly and JS code</u>, pleaser refer :
-          <Link
-            scroll={true}
-            href="https://developer.mozilla.org/en-US/docs/WebAssembly"
-          >
-            {" "}
-            <u>MDN Webassembly</u>
-          </Link>
-        </p>
-      </div>
-    </main>
+gtag('config', 'G-Q7HMTR5N95');`}
+        </Script>
+      </Head>
+      <main className="flex flex-col items-center p-4 md:p-8 lg:p-12 w-screen">
+        <div className="w-full max-w-full">
+          <ResizableEditors
+            Editor1={
+              <_Editor
+                defaultCode={defaultLanguageConstants.CPP.defaultCode}
+                defaultLanguage={defaultLanguageConstants.CPP.defaultLanguage}
+                handleCodeChange={handleCppCodeChange}
+                width={"60vw"} // Adjusted from "90vh" to be more responsive
+              />
+            }
+            Editor2={
+              <_Editor
+                key={generatedJsCode}
+                defaultCode={generatedJsCode}
+                defaultLanguage={defaultLanguageConstants.JS.defaultLanguage}
+                handleCodeChange={handleJSCodeChange}
+                width={"40vw"} // Adjusted from "55vh" to be more responsive
+              />
+            }
+          />
+          <div className="text-center py-4 my-10 sm:py-10 flex justify-around ">
+            <CompileButton handleClick={handleClick} isCompiling={loading} />
+            {!loading ? (
+              <Button
+                handleClick={handleDownloadJSCodeClick}
+                text={"Download JS and Wasm code"}
+                disabled={!buildStatus}
+              />
+            ) : (
+              <></>
+            )}
+          </div>
+
+          <Terminal input={state} />
+          <Code />
+          <p>
+            For more information on how to use the generated{" "}
+            <u>Webassembly and JS code</u>, pleaser refer :
+            <Link
+              scroll={true}
+              href="https://developer.mozilla.org/en-US/docs/WebAssembly"
+            >
+              {" "}
+              <u>MDN Webassembly</u>
+            </Link>
+          </p>
+        </div>
+      </main>
+    </>
   );
 }
