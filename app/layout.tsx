@@ -1,4 +1,5 @@
 import "./globals.css";
+import Script from "next/script";
 import { Inter } from "next/font/google";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
@@ -17,6 +18,17 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" data-theme="dracula">
+      <Script
+        async
+        src="https://www.googletagmanager.com/gtag/js?id=G-Q7HMTR5N95"
+      ></Script>
+      <Script>
+        {`  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Q7HMTR5N95');`}
+      </Script>
       <body className={inter.className}>
         <div className="flex flex-col items-center px-12 pt-12">
           <Header />
