@@ -4,11 +4,10 @@ export default function GoogleAnalytics() {
     return (
         <>
             <Script
-                strategy="beforeInteractive"
-                async
+                prefetch
                 src="https://www.googletagmanager.com/gtag/js?id=G-Q7HMTR5N95"
             ></Script>
-            <Script strategy="beforeInteractive">
+            <Script prefetch>
                 {`  window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());

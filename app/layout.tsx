@@ -20,10 +20,6 @@ export default function RootLayout({
   return (
     <html lang="en" data-theme="dracula">
       <GoogleAnalytics />
-      <meta
-        name="google-site-verification"
-        content="7rNejNSFqrwjCVSOwCx7Gm3_qda3exX8pvAOnSicTEk"
-      />
       <body className={inter.className}>
         <div className="flex flex-col items-center px-12 pt-12">
           <Header />
