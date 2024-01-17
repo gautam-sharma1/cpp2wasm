@@ -50,7 +50,7 @@ export default function Home() {
   }
 
   function handleJSCodeChange(value) {
-    console.log("JS handler called");
+
   }
 
   async function handleDownloadJSCodeClick() {
@@ -80,7 +80,7 @@ export default function Home() {
       process.env.NEXT_PUBLIC_GCLOUD_CLOUD_RUN_DOWNLOAD_URL,
       options
     );
-    console.log(response);
+
     if (!response.ok) {
       setState({ status: "error", text: "Error Downloading" });
       throw new Error(`HTTP error! Status: ${response.status}`);
@@ -151,7 +151,6 @@ export default function Home() {
     const res = await response.json();
     const output = res.compiled_output;
     if (output.status === "success") {
-      console.log("setting compiled code");
       setGeneratedJsCode(output.compiled_code);
       setState({ status: "success", text: "Compiled Successfully! ✅" });
       setBuildStatus(true);
@@ -165,9 +164,11 @@ export default function Home() {
 
   return (
     <>
+      <Head>
 
-      <GoogleAnalytics />
 
+        <GoogleAnalytics />
+      </Head>
       <main className="flex flex-col items-center p-4 md:p-8 lg:p-12 w-screen">
         <div className="w-full max-w-full">
           <ResizableEditors

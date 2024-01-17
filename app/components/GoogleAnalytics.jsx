@@ -4,9 +4,10 @@ export default function GoogleAnalytics() {
     return (
         <>
             <Script
+                strategy="beforeInteractive"
                 src="https://www.googletagmanager.com/gtag/js?id=G-Q7HMTR5N95"
             ></Script>
-            <Script strategy="afterInteractive">
+            <Script strategy="beforeInteractive">
                 {`  window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
