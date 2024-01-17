@@ -163,20 +163,9 @@ export default function Home() {
 
   return (
     <>
-      <Head>
-        <Script
-          strategy="beforeInteractive"
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-Q7HMTR5N95"
-        ></Script>
-        <Script strategy="beforeInteractive">
-          {`  window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
 
-gtag('config', 'G-Q7HMTR5N95');`}
-        </Script>
-      </Head>
+
+
       <main className="flex flex-col items-center p-4 md:p-8 lg:p-12 w-screen">
         <div className="w-full max-w-full">
           <ResizableEditors
