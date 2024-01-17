@@ -19,8 +19,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" data-theme="dracula">
-      <GoogleAnalytics />
       <body className={inter.className}>
+        <GoogleAnalytics />
         <div className="flex flex-col items-center px-12 pt-12">
           <Header />
           {children}
