@@ -4,8 +4,6 @@ export default function GoogleAnalytics() {
     return (
         <>
             <Script
-
-
                 src="https://www.googletagmanager.com/gtag/js?id=G-Q7HMTR5N95"
             ></Script>
             <Script strategy="afterInteractive">
