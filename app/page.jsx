@@ -10,6 +10,8 @@ import Terminal from "@/app/components/Terminal";
 import ResizableEditors from "@/app/components/ResizableEditors";
 import Code from "@/app/components/Code";
 import Head from "next/head";
+import GoogleAnalytics from "@/app/components/GoogleAnalytics";
+
 import "dotenv/config";
 
 export default function Home() {
@@ -164,7 +166,7 @@ export default function Home() {
   return (
     <>
 
-
+      <GoogleAnalytics />
 
       <main className="flex flex-col items-center p-4 md:p-8 lg:p-12 w-screen">
         <div className="w-full max-w-full">
