@@ -164,11 +164,6 @@ export default function Home() {
 
   return (
     <>
-      <Head>
-
-
-        <GoogleAnalytics />
-      </Head>
       <main className="flex flex-col items-center p-4 md:p-8 lg:p-12 w-screen">
         <div className="w-full max-w-full">
           <ResizableEditors
